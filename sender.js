@@ -17,3 +17,12 @@ function temperatureSensor(minThreshold = 0, maxThreshold = 50, range = 50) {
 function socSensor(minThreshold = 0, maxThreshold = 50, range = 50) {
   return  randomValueGenerator(minThreshold, maxThreshold, range);
 }
+
+function sensorStatistics(temMin, tempMax, socMin, socMax, tempRange, socRange) {
+    temperatureSensor(temMin, tempMax, tempRange);
+    socSensor(socMin, socMax, socRange);
+}
+
+function printStatement(statement) {
+    console.log(statement);
+}
