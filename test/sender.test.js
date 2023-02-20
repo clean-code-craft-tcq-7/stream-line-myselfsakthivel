@@ -9,12 +9,12 @@ describe('randomDataGenerator', () => {
     let listToTest = sender.randomDataGenerator(1, 10, 5);
     
     it('Should return correct range', () => {
-        expect(list.length).to.deep.equals(5);
+        expect(listToTest.length).to.deep.equals(5);
     });
     
     it('Should return correct values inside given min max values', () => {
-        let minValue = Math.min(...list);
-        let maxValue = Math.max(...list);
+        let minValue = Math.min(...listToTest);
+        let maxValue = Math.max(...listToTest);
         expect(minValue).to.be.above(0)
         expect(maxValue).to.be.below(10)
     });
