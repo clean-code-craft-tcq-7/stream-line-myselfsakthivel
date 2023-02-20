@@ -1,6 +1,8 @@
 const { expect } = require('chai');
 const sender = require('../sender');
 
+commonChecks('randomDataGenerator', 0, 10, 5);
+
 function commonChecks(nameOfTheFunction, min, max, range) {
     describe(nameOfTheFunction, () => {
         it('Should exists', () => {
