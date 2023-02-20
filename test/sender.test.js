@@ -1,22 +1,18 @@
 const { expect } = require('chai');
 const sender = require('../sender');
 
-describe('randomValueGenerator', () => {
+describe('randomDataGenerator', () => {
     it('Should exists', () => {
-        expect(sender.randomValueGenerator).to.exist;
+        expect(sender.randomDataGenerator).to.exist;
     });
     
-    let list = sender.randomValueGenerator(1, 10, 5);
+    let listToTest = sender.randomDataGenerator(1, 10, 5);
     
-    it('Should return randomValue', () => {
+    it('Should return correct range', () => {
         expect(list.length).to.deep.equals(5);
     });
     
-    it('Should return temperature sensor exact value count', () => {
-        expect(list.length).to.deep.equals(5);
-    });
-    
-    it('Should return temperature sensor random value between the min and max value given', () => {
+    it('Should return correct values inside given min max values', () => {
         let minValue = Math.min(...list);
         let maxValue = Math.max(...list);
         expect(minValue).to.be.above(0)
@@ -24,20 +20,20 @@ describe('randomValueGenerator', () => {
     });
 });
 
-describe('temperatureSensor', () => {
+describe('simulateTemperatureSensor', () => {
     it('Should exists', () => {
-        expect(sender.temperatureSensor).to.exist;
+        expect(sender.simulateTemperatureSensor).to.exist;
     });
 });
 
-describe('socSensor', () => {
+describe('simulateSocSensor', () => {
     it('Should exists', () => {
-        expect(sender.socSensor).to.exist;
+        expect(sender.simulateSocSensor).to.exist;
     });
 });
 
-describe('sensorStatistics', () => {
+describe('prepareStreamData', () => {
     it('Should exists', () => {
-        expect(sender.sensorStatistics).to.exist;
+        expect(sender.prepareStreamData).to.exist;
     });
 });
