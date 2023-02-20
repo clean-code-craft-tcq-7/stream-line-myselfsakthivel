@@ -9,3 +9,11 @@ function randomValueGenerator(minThreshold = 0, maxThreshold = 50, range = 50) {
     printStatement(randomlist);
     return randomlist;
 }
+
+function temperatureSensor(minThreshold = 0, maxThreshold = 50, range = 50) {
+   return randomValueGenerator(minThreshold, maxThreshold, range);
+}
+
+function socSensor(minThreshold = 0, maxThreshold = 50, range = 50) {
+  return  randomValueGenerator(minThreshold, maxThreshold, range);
+}
