@@ -41,6 +41,9 @@ function prepareStreamData(dataNeeded) {
 }
 
 function printToConsole(parameters) {
+    /* output format; its an array of objects;
+    [{"temperature":66,"voltage":112}]
+    */
     console.log(JSON.stringify(parameters));
 }
 
