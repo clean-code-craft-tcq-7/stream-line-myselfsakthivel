@@ -11,7 +11,7 @@ function commonChecks(nameOfTheFunction, min, max, range) {
             expect(sender[nameOfTheFunction]).to.exist;
         });
 
-        let listToTest = sender[nameOfTheFunction](min, max, range);
+        let listToTest = sender[nameOfTheFunction](range, min, max);
 
         it('Should return correct range', () => {
             expect(listToTest.length).to.deep.equals(range);
