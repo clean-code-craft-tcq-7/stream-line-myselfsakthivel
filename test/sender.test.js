@@ -68,4 +68,10 @@ describe('prepareStreamData', () => {
     it('Should return correct range', () => {
         expect(listToTest.length).to.deep.equals(10);
     });
+    
+    it('Should return correct objects with keys', () => {
+        let singleObj = listToTest[0];
+        expect(singleObj).to.have.property('temperature');
+        expect(singleObj).to.have.property('voltage');
+    });
 });
