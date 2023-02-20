@@ -1,1 +1,11 @@
-
+function randomValueGenerator(minThreshold = 0, maxThreshold = 50, range = 50) {
+    let randomlist = []
+    for (let i = 0; i < range; i++) {
+        let lowLimit = Number(minThreshold);
+        let highLimit = Number(maxThreshold);
+        let randomNum = Math.floor(Math.random() * (highLimit - lowLimit) + lowLimit);
+        randomlist.push(randomNum);
+    }
+    printStatement(randomlist);
+    return randomlist;
+}
