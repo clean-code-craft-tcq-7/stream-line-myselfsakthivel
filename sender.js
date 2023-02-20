@@ -4,7 +4,7 @@ Author: Sakthivel Karthikeyan
 */
 
 // to generate the random data;
-function randomDataGenerator(min, max, range) {
+function randomDataGenerator(range, min, max) {
     var randomlist = [];
     for (let i = 0; i < range; i++) {
         var lowerLimit = Number(min);
@@ -19,14 +19,14 @@ function randomDataGenerator(min, max, range) {
 function simulateTemperatureSensor(randomDataNeeded) {
     var min = 0;
     var max = 125;
-    return randomDataGenerator(min, max, randomDataNeeded);
+    return randomDataGenerator(randomDataNeeded, min, max);
 }
 
 // to simulate the soc sensor changes; min = 20volt and max = 50volts;
 function simulateSocSensor(randomDataNeeded) {
     var min = 20;
     var max = 50;
-    return randomDataGenerator(min, max, randomDataNeeded);
+    return randomDataGenerator(randomDataNeeded, min, max);
 }
 
 // to combine the two params as one in JSON format
