@@ -28,3 +28,10 @@ function printStatement(statement) {
 }
 
 sensorStatistics(0,10,0,10,50,50);
+
+module.exports = {
+    randomValueGenerator,
+    temperatureSensor,
+    socSensor,
+    sensorStatistics
+};
