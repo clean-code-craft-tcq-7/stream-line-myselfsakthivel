@@ -34,12 +34,16 @@ function prepareStreamData(dataNeeded, enableOut = false) {
     var stream = [];
     var temperatureData = simulateTemperatureSensor(dataNeeded);
     var socData = simulateTemperatureSensor(dataNeeded);
+    
     for (let i = 0; i < dataNeeded; i++) {
         stream.push({ temperature: temperatureData[i], voltage: socData[i] });
     }
+    
     if(enableOut) {
         printToConsole(stream);
     }
+    
+    return stream;
 }
 
 function printToConsole(parameters) {
