@@ -26,7 +26,7 @@ function simulateTemperatureSensor(randomDataNeeded) {
 function simulateSocSensor(randomDataNeeded) {
     var min = 20;
     var max = 50;
-    return randomValueGenerator(min, max, randomDataNeeded);
+    return randomDataGenerator(min, max, randomDataNeeded);
 }
 
 // to combine the two params as one in JSON format
