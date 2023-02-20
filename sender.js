@@ -1,37 +1,55 @@
-function randomValueGenerator(minThreshold = 0, maxThreshold = 50, range = 50) {
-    let randomlist = []
+/*
+Main sender file
+Author: Sakthivel Karthikeyan
+*/
+
+// to generate the random data;
+function randomDataGenerator(min, max, range) {
+    var randomlist = [];
     for (let i = 0; i < range; i++) {
-        let lowLimit = Number(minThreshold);
-        let highLimit = Number(maxThreshold);
-        let randomNum = Math.floor(Math.random() * (highLimit - lowLimit) + lowLimit);
-        randomlist.push(randomNum);
+        var lowerLimit = Number(min);
+        var upperLimit = Number(max);
+        var randomData = Math.floor(Math.random() * (lowerLimit - upperLimit) + lowerLimit);
+        randomlist.push(randomData);
     }
-    printStatement(randomlist);
     return randomlist;
 }
 
-function temperatureSensor(minThreshold = 0, maxThreshold = 50, range = 50) {
-   return randomValueGenerator(minThreshold, maxThreshold, range);
+// to simulate the temperature changes; min = 0*c and max = 125*C;
+function simulateTemperatureSensor(randomDataNeeded) {
+    var min = 0;
+    var max = 125;
+    return randomDataGenerator(min, max, randomDataNeeded);
 }
 
-function socSensor(minThreshold = 0, maxThreshold = 50, range = 50) {
-  return  randomValueGenerator(minThreshold, maxThreshold, range);
+// to simulate the soc sensor changes; min = 20volt and max = 50volts;
+function simulateSocSensor(randomDataNeeded) {
+    var min = 20;
+    var max = 50;
+    return randomValueGenerator(min, max, randomDataNeeded);
 }
 
-function sensorStatistics(temMin, tempMax, socMin, socMax, tempRange, socRange) {
-    temperatureSensor(temMin, tempMax, tempRange);
-    socSensor(socMin, socMax, socRange);
+// to combine the two params as one in JSON format
+function prepareStreamData(dataNeeded) {
+    var stream = [];
+    var temperatureData = simulateTemperatureSensor(dataNeeded);
+    var socData = simulateTemperatureSensor(dataNeeded);
+    for (let i = 0; i < dataNeeded; i++) {
+        stream.push({ temperature: temperatureData[i], voltage: socData[i] });
+    }
+    printToConsole(stream);
 }
 
-function printStatement(statement) {
-    console.log(statement);
+function printToConsole(parameters) {
+    console.log(JSON.stringify(parameters));
 }
 
-//sensorStatistics(0,10,0,10,50,50);
+prepareStreamData(50);
 
 module.exports = {
-    randomValueGenerator,
-    temperatureSensor,
-    socSensor,
-    sensorStatistics
+    randomDataGenerator,
+    simulateTemperatureSensor,
+    simulateSocSensor,
+    prepareStreamData,
+    printToConsole
 };
