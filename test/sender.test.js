@@ -1,24 +1,26 @@
 const { expect } = require('chai');
 const sender = require('../sender');
 
-describe('randomDataGenerator', () => {
-    it('Should exists', () => {
-        expect(sender.randomDataGenerator).to.exist;
+function commonChecks(nameOfTheFunction, min, max, range) {
+    describe(nameOfTheFunction, () => {
+        it('Should exists', () => {
+            expect(sender[nameOfTheFunction]).to.exist;
+        });
+
+        let listToTest = sender.[nameOfTheFunction](min, max, range);
+
+        it('Should return correct range', () => {
+            expect(listToTest.length).to.deep.equals(range);
+        });
+
+        it('Should return correct values inside given min max values', () => {
+            let minValue = Math.min(...listToTest);
+            let maxValue = Math.max(...listToTest);
+            expect(minValue).to.be.at.least(min);
+            expect(maxValue).to.be.at.most(max);
+        });
     });
-    
-    let listToTest = sender.randomDataGenerator(1, 10, 5);
-    
-    it('Should return correct range', () => {
-        testRange(listToTest, 5);
-    });
-    
-    it('Should return correct values inside given min max values', () => {
-        let minValue = Math.min(...listToTest);
-        let maxValue = Math.max(...listToTest);
-        expect(minValue).to.be.at.least(0)
-        expect(maxValue).to.be.at.most(10)
-    });
-});
+}
 
 describe('simulateTemperatureSensor', () => {
     it('Should exists', () => {
