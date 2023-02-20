@@ -26,3 +26,5 @@ function sensorStatistics(temMin, tempMax, socMin, socMax, tempRange, socRange) 
 function printStatement(statement) {
     console.log(statement);
 }
+
+sensorStatistics(0,10,0,10,50,50);
