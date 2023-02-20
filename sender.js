@@ -30,14 +30,16 @@ function simulateSocSensor(randomDataNeeded) {
 }
 
 // to combine the two params as one in JSON format
-function prepareStreamData(dataNeeded) {
+function prepareStreamData(dataNeeded, enableOut = false) {
     var stream = [];
     var temperatureData = simulateTemperatureSensor(dataNeeded);
     var socData = simulateTemperatureSensor(dataNeeded);
     for (let i = 0; i < dataNeeded; i++) {
         stream.push({ temperature: temperatureData[i], voltage: socData[i] });
     }
-    printToConsole(stream);
+    if(enableOut) {
+        printToConsole(stream);
+    }
 }
 
 function printToConsole(parameters) {
@@ -47,7 +49,7 @@ function printToConsole(parameters) {
     console.log(JSON.stringify(parameters));
 }
 
-prepareStreamData(50);
+prepareStreamData(50, true);
 
 module.exports = {
     randomDataGenerator,
