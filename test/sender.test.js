@@ -2,6 +2,8 @@ const { expect } = require('chai');
 const sender = require('../sender');
 
 commonChecks('randomDataGenerator', 0, 10, 5);
+commonChecks('simulateTemperatureSensor', 0, 125, 10);
+commonChecks('simulateSocSensor', 20, 50, 15);
 
 function commonChecks(nameOfTheFunction, min, max, range) {
     describe(nameOfTheFunction, () => {
@@ -24,44 +26,6 @@ function commonChecks(nameOfTheFunction, min, max, range) {
     });
 }
 
-describe('simulateTemperatureSensor', () => {
-    it('Should exists', () => {
-        expect(sender.simulateTemperatureSensor).to.exist;
-    });
-    
-    let listToTest = sender.simulateTemperatureSensor(20);
-    
-    it('Should return correct range', () => {
-        testRange(listToTest, 20);
-    });
-    
-    it('Should return correct values inside given min max values', () => {
-        let minValue = Math.min(...listToTest);
-        let maxValue = Math.max(...listToTest);
-        expect(minValue).to.be.at.least(0)
-        expect(maxValue).to.be.at.most(125)
-    });
-});
-
-describe('simulateSocSensor', () => {
-    it('Should exists', () => {
-        expect(sender.simulateSocSensor).to.exist;
-    });
-    
-    let listToTest = sender.simulateSocSensor(30);
-    
-    it('Should return correct range', () => {
-        testRange(listToTest, 30);
-    });
-    
-    it('Should return correct values inside given min max values', () => {
-        let minValue = Math.min(...listToTest);
-        let maxValue = Math.max(...listToTest);
-        expect(minValue).to.be.at.least(20)
-        expect(maxValue).to.be.at.most(50)
-    });
-});
-
 describe('prepareStreamData', () => {
     it('Should exists', () => {
         expect(sender.prepareStreamData).to.exist;
@@ -70,7 +34,7 @@ describe('prepareStreamData', () => {
     let listToTest = sender.prepareStreamData(10);
     
     it('Should return correct range', () => {
-        testRange(listToTest, 10);
+        expect(listToTest.length).to.deep.equals(10);
     });
     
     it('Should return correct objects with keys', () => {
@@ -79,7 +43,3 @@ describe('prepareStreamData', () => {
         expect(singleObj).to.have.property('voltage');
     });
 });
-
-function testRange(listToTest, value) {
-    return expect(listToTest.length).to.deep.equals(value);
-}
