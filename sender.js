@@ -9,7 +9,7 @@ function randomDataGenerator(min, max, range) {
     for (let i = 0; i < range; i++) {
         var lowerLimit = Number(min);
         var upperLimit = Number(max);
-        var randomData = Math.floor(Math.random() * (lowerLimit - upperLimit) + lowerLimit);
+        var randomData = Math.floor(Math.random() * (upperLimit - lowerLimit) + lowerLimit);
         randomlist.push(randomData);
     }
     return randomlist;
