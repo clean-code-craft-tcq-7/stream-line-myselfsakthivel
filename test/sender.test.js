@@ -15,8 +15,8 @@ describe('randomDataGenerator', () => {
     it('Should return correct values inside given min max values', () => {
         let minValue = Math.min(...listToTest);
         let maxValue = Math.max(...listToTest);
-        expect(minValue).to.be.at.most(0)
-        expect(maxValue).to.be.at.least(10)
+        expect(minValue).to.be.at.least(0)
+        expect(maxValue).to.be.at.most(10)
     });
 });
 
@@ -34,8 +34,8 @@ describe('simulateTemperatureSensor', () => {
     it('Should return correct values inside given min max values', () => {
         let minValue = Math.min(...listToTest);
         let maxValue = Math.max(...listToTest);
-        expect(minValue).to.be.at.most(0)
-        expect(maxValue).to.be.at.least(125)
+        expect(minValue).to.be.at.least(0)
+        expect(maxValue).to.be.at.most(125)
     });
 });
 
@@ -53,8 +53,8 @@ describe('simulateSocSensor', () => {
     it('Should return correct values inside given min max values', () => {
         let minValue = Math.min(...listToTest);
         let maxValue = Math.max(...listToTest);
-        expect(minValue).to.be.at.most(20)
-        expect(maxValue).to.be.at.least(50)
+        expect(minValue).to.be.at.least(20)
+        expect(maxValue).to.be.at.most(50)
     });
 });
 
