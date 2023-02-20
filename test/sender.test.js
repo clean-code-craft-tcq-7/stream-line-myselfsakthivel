@@ -9,7 +9,7 @@ describe('randomDataGenerator', () => {
     let listToTest = sender.randomDataGenerator(1, 10, 5);
     
     it('Should return correct range', () => {
-        expect(listToTest.length).to.deep.equals(5);
+        testRange(listToTest, 5);
     });
     
     it('Should return correct values inside given min max values', () => {
@@ -28,7 +28,7 @@ describe('simulateTemperatureSensor', () => {
     let listToTest = sender.simulateTemperatureSensor(20);
     
     it('Should return correct range', () => {
-        expect(listToTest.length).to.deep.equals(20);
+        testRange(listToTest, 20);
     });
     
     it('Should return correct values inside given min max values', () => {
@@ -47,7 +47,7 @@ describe('simulateSocSensor', () => {
     let listToTest = sender.simulateSocSensor(30);
     
     it('Should return correct range', () => {
-        expect(listToTest.length).to.deep.equals(30);
+        testRange(listToTest, 30);
     });
     
     it('Should return correct values inside given min max values', () => {
@@ -66,7 +66,7 @@ describe('prepareStreamData', () => {
     let listToTest = sender.prepareStreamData(10);
     
     it('Should return correct range', () => {
-        expect(listToTest.length).to.deep.equals(10);
+        testRange(listToTest, 10);
     });
     
     it('Should return correct objects with keys', () => {
@@ -75,3 +75,7 @@ describe('prepareStreamData', () => {
         expect(singleObj).to.have.property('voltage');
     });
 });
+
+function testRange(listToTest, value) {
+    return expect(listToTest.length).to.deep.equals(value);
+}
